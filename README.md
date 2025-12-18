@@ -173,7 +173,8 @@ HabitTracker/
 ├── target/
 ├── pom.xml
 └── README.md
-
+```
+---
 
 ## 🧱 Architecture Overview
 
