@@ -93,35 +93,35 @@ The application follows a **clean MVC architecture**, supports **light/dark them
 
 ## 📁 Project Structure
 
+```text
 HabitTracker/
 ├── src/
 │   └── main/
 │       ├── java/
 │       │   └── com/
 │       │       └── habittracker/
-│       │
-│       │           ├── app/                      # Application entry & navigation
+│       │           ├── app/
 │       │           │   ├── AppLauncher.java
 │       │           │   ├── Main.java
 │       │           │   └── SceneManager.java
-│       │
-│       │           ├── ui/                       # JavaFX UI controllers
+│       │           │
+│       │           ├── ui/
 │       │           │   ├── LoginUIController.java
 │       │           │   ├── DashboardUIController.java
 │       │           │   ├── HabitUIController.java
 │       │           │   ├── TaskUIController.java
 │       │           │   ├── JournalUIController.java
 │       │           │   └── AnalyticsUIController.java
-│       │
-│       │           ├── controllers/              # MVC controllers (logic bridge)
+│       │           │
+│       │           ├── controllers/
 │       │           │   ├── LoginController.java
 │       │           │   ├── DashboardController.java
 │       │           │   ├── HabitController.java
 │       │           │   ├── TaskController.java
 │       │           │   ├── JournalController.java
 │       │           │   └── AnalyticsController.java
-│       │
-│       │           ├── models/                   # Core domain models
+│       │           │
+│       │           ├── models/
 │       │           │   ├── habits/
 │       │           │   │   ├── Habit.java
 │       │           │   │   ├── HabitRecord.java
@@ -134,8 +134,8 @@ HabitTracker/
 │       │           │   │   └── HabitStats.java
 │       │           │   └── user/
 │       │           │       └── User.java
-│       │
-│       │           ├── services/                 # Business logic & persistence
+│       │           │
+│       │           ├── services/
 │       │           │   ├── UserService.java
 │       │           │   ├── HabitService.java
 │       │           │   ├── TaskService.java
@@ -143,14 +143,14 @@ HabitTracker/
 │       │           │   ├── AnalyticsService.java
 │       │           │   ├── ThemeService.java
 │       │           │   └── DataStore.java
-│       │
-│       │           └── utils/                    # Helper utilities
+│       │           │
+│       │           └── utils/
 │       │               ├── DateUtils.java
 │       │               ├── FileUtils.java
 │       │               └── LocalDateAdapter.java
 │       │
 │       └── resources/
-│           ├── fxml/                             # JavaFX views
+│           ├── fxml/
 │           │   ├── login.fxml
 │           │   ├── dashboard.fxml
 │           │   ├── habits.fxml
@@ -158,23 +158,22 @@ HabitTracker/
 │           │   ├── journal.fxml
 │           │   └── analytics.fxml
 │           │
-│           ├── css/                              # Themes & styles
+│           ├── css/
 │           │   ├── light.css
 │           │   └── dark.css
 │           │
-│           └── data/                             # Default JSON data
+│           └── data/
 │               ├── habits.json
 │               ├── tasks.json
 │               ├── journal.json
 │               └── settings.json
 │
-├── data/                                        # Runtime user data (gitignored)
-├── logs/                                        # Optional logs
-├── target/                                      # Maven build output
+├── data/
+├── logs/
+├── target/
 ├── pom.xml
 └── README.md
 
----
 
 ## 🧱 Architecture Overview
 
