@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.text.Text?>
+<?import javafx.scene.layout.Region?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.habittracker.controllers.DashboardController"
+            styleClass="root">
+
+    <left>
+        <VBox styleClass="sidebar" spacing="10" prefWidth="250">
+            <padding>
+                <Insets top="20" right="20" bottom="20" left="20"/>
+            </padding>
+            <Label text="Habit Tracker" styleClass="title"/>
+            <Separator/>
+            <Button text="Dashboard" styleClass="nav-button"/>
+            <Button text="Habits" onAction="#openHabits" styleClass="nav-button"/>
+            <Button text="Tasks" onAction="#openTasks" styleClass="nav-button"/>
+            <Button text="Journal" onAction="#openJournal" styleClass="nav-button"/>
+            <Button text="Analytics" onAction="#openAnalytics" styleClass="nav-button"/>
+            <Region VBox.vgrow="ALWAYS"/>
+            <Button text="Toggle Theme" onAction="#toggleTheme" styleClass="icon-button"/>
+        </VBox>
+    </left>
+
+    <center>
+        <ScrollPane fitToWidth="true" style="-fx-background-color: transparent; -fx-background: transparent;">
+            <VBox spacing="30" styleClass="content">
+                <padding>
+                    <Insets top="40" right="40" bottom="40" left="40"/>
+                </padding>
+                <Label text="Overview" styleClass="section-title"/>
+                
+                <!-- Motivational Messages -->
+                <VBox styleClass="card" spacing="15">
+                    <Label fx:id="motivationalMessageLabel" text="🌟 Welcome to your Habit Tracker!" 
+                           style="-fx-font-size: 18px; -fx-text-fill: -accent-color; -fx-font-weight: bold;" 
+                           wrapText="true"/>
+                    <Label fx:id="tasksMessageLabel" text="📝 Check your tasks and habits!" 
+                           style="-fx-font-size: 15px; -fx-text-fill: -secondary-text;" 
+                           wrapText="true"/>
+                    <Label fx:id="habitsMessageLabel" text="💪 Track your progress!" 
+                           style="-fx-font-size: 14px; -fx-text-fill: -secondary-text;" 
+                           wrapText="true"/>
+                </VBox>
+                
+                <!-- Stats Cards -->
+                <HBox spacing="20">
+                    <VBox styleClass="card" HBox.hgrow="ALWAYS" spacing="10">
+                        <Label text="Active Habits" styleClass="card-title"/>
+                        <Label fx:id="habitCountLabel" text="0" styleClass="card-value"/>
+                        <Label fx:id="habitsCompletedLabel" text="0 completed today" 
+                               style="-fx-font-size: 12px; -fx-text-fill: -secondary-text;"/>
+                        <Button text="Manage Habits →" onAction="#openHabits" styleClass="button-secondary" 
+                                style="-fx-font-size: 12px; -fx-padding: 6 12;"/>
+                    </VBox>
+                    
+                    <VBox styleClass="card" HBox.hgrow="ALWAYS" spacing="10">
+                        <Label text="Tasks Today" styleClass="card-title"/>
+                        <Label fx:id="taskCountLabel" text="0" styleClass="card-value"/>
+                        <Label fx:id="tasksCompletedLabel" text="0 completed" 
+                               style="-fx-font-size: 12px; -fx-text-fill: -secondary-text;"/>
+                        <Button text="View Tasks →" onAction="#openTasks" styleClass="button-secondary" 
+                                style="-fx-font-size: 12px; -fx-padding: 6 12;"/>
+                    </VBox>
+                    
+                    <VBox styleClass="card" HBox.hgrow="ALWAYS" spacing="10">
+                        <Label text="Journal Entries" styleClass="card-title"/>
+                        <Label fx:id="journalCountLabel" text="0" styleClass="card-value"/>
+                        <Label text="Total entries" 
+                               style="-fx-font-size: 12px; -fx-text-fill: -secondary-text;"/>
+                        <Button text="Write Entry →" onAction="#openJournal" styleClass="button-secondary" 
+                                style="-fx-font-size: 12px; -fx-padding: 6 12;"/>
+                    </VBox>
+                </HBox>
+            </VBox>
+        </ScrollPane>
+    </center>
+
+</BorderPane>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.text.Text?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.habittracker.controllers.TaskController"
+            styleClass="root, theme-tasks">
+
+    <top>
+        <VBox spacing="10">
+            <padding>
+                <Insets top="20" right="20" bottom="20" left="20"/>
+            </padding>
+            <HBox spacing="10" alignment="CENTER_LEFT">
+                <Label text="Daily Tasks" styleClass="title" HBox.hgrow="ALWAYS"/>
+                <Button text="Toggle Theme" onAction="#toggleTheme" styleClass="icon-button"/>
+                <Button text="Back to Dashboard" onAction="#goBack" styleClass="icon-button"/>
+            </HBox>
+        </VBox>
+    </top>
+
+    <center>
+        <VBox spacing="20" styleClass="content">
+            <padding>
+                <Insets top="10" right="40" bottom="40" left="40"/>
+            </padding>
+
+            <!-- Input Card -->
+            <VBox styleClass="card" spacing="10">
+                <Label text="New Task" styleClass="card-title"/>
+                <HBox spacing="15" alignment="CENTER_LEFT">
+                    <TextField fx:id="taskTitleField" promptText="What needs to be done?" HBox.hgrow="ALWAYS"/>
+                    <TextField fx:id="taskNotesField" promptText="Notes (optional)" prefWidth="200"/>
+                    <Button text="Add Task" onAction="#addTask" styleClass="button"/>
+                </HBox>
+            </VBox>
+
+            <!-- Completion Message -->
+            <Label fx:id="completionMessageLabel" styleClass="card-title" wrapText="true"/>
+
+            <!-- List Card -->
+            <VBox styleClass="card" VBox.vgrow="ALWAYS" spacing="10">
+                <Label text="Today's Tasks" styleClass="card-title"/>
+                <ListView fx:id="taskList" VBox.vgrow="ALWAYS"/>
+            </VBox>
+        </VBox>
+    </center>
+
+</BorderPane>

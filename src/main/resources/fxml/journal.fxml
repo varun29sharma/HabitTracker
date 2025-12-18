@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.text.Text?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.habittracker.controllers.JournalController"
+            styleClass="root, theme-journal">
+
+    <top>
+        <VBox spacing="10">
+            <padding>
+                <Insets top="20" right="20" bottom="20" left="20"/>
+            </padding>
+            <HBox spacing="10" alignment="CENTER_LEFT">
+                <Label text="My Journal" styleClass="title" HBox.hgrow="ALWAYS"/>
+                <Button text="Toggle Theme" onAction="#toggleTheme" styleClass="icon-button"/>
+                <Button text="Back to Dashboard" onAction="#goBack" styleClass="icon-button"/>
+            </HBox>
+        </VBox>
+    </top>
+
+    <center>
+        <VBox spacing="20" styleClass="content">
+            <padding>
+                <Insets top="10" right="40" bottom="40" left="40"/>
+            </padding>
+
+            <!-- New Entry Card -->
+            <VBox styleClass="card" VBox.vgrow="ALWAYS" spacing="10">
+                <Label text="New Entry" styleClass="card-title"/>
+                <TextArea fx:id="journalEntryArea" promptText="Write your thoughts here..." wrapText="true" VBox.vgrow="ALWAYS" styleClass="text-area"/>
+                <HBox alignment="CENTER_RIGHT">
+                    <Button text="Save Entry" onAction="#addEntry" styleClass="button"/>
+                </HBox>
+            </VBox>
+            
+            <!-- History Card -->
+            <VBox styleClass="card" VBox.vgrow="ALWAYS" spacing="10">
+                <Label text="Recent Entries" styleClass="card-title"/>
+                <ListView fx:id="journalList" VBox.vgrow="ALWAYS"/>
+            </VBox>
+        </VBox>
+    </center>
+
+</BorderPane>

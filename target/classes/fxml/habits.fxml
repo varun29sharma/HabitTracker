@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.text.Text?>
+<?import javafx.collections.FXCollections?>
+<?import java.lang.String?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.habittracker.controllers.HabitController"
+            styleClass="root, theme-habits">
+
+    <top>
+        <VBox spacing="10">
+            <padding>
+                <Insets top="20" right="20" bottom="20" left="20"/>
+            </padding>
+            <HBox spacing="10" alignment="CENTER_LEFT">
+                <Label text="My Habits" styleClass="title" HBox.hgrow="ALWAYS"/>
+                <Button text="Toggle Theme" onAction="#toggleTheme" styleClass="icon-button"/>
+                <Button text="Back to Dashboard" onAction="#goBack" styleClass="icon-button"/>
+            </HBox>
+        </VBox>
+    </top>
+
+    <center>
+        <VBox spacing="20" styleClass="content">
+            <padding>
+                <Insets top="10" right="40" bottom="40" left="40"/>
+            </padding>
+
+            <!-- Card for Adding Habit -->
+            <VBox styleClass="card" spacing="10">
+                <Label text="Add New Habit" styleClass="card-title"/>
+                <HBox spacing="15" alignment="CENTER_LEFT">
+                    <TextField fx:id="emojiField" promptText="Emoji (e.g., 🏃)" prefWidth="100"/>
+                    <TextField fx:id="habitNameField" promptText="Enter habit name..." HBox.hgrow="ALWAYS"/>
+                    <ComboBox fx:id="frequencyComboBox" promptText="Frequency" prefWidth="150"/>
+                    <Button text="Add Habit" onAction="#addHabit" styleClass="button"/>
+                </HBox>
+            </VBox>
+
+            <!-- Empty State -->
+            <VBox fx:id="emptyStateBox" styleClass="card" spacing="15" alignment="CENTER" visible="false" managed="false">
+                <Label fx:id="emptyStateLabel" text="No habits yet! Add your first habit to get started." 
+                       styleClass="card-title" textAlignment="CENTER" wrapText="true"/>
+                <Label text="💡 Tip: Start with daily habits to build consistency!" 
+                       style="-fx-text-fill: -secondary-text; -fx-font-size: 12px;" 
+                       textAlignment="CENTER" wrapText="true"/>
+            </VBox>
+
+            <!-- Weekly Grid View -->
+            <ScrollPane fx:id="scrollPane" fitToWidth="true" style="-fx-background-color: transparent; -fx-background: transparent;" VBox.vgrow="ALWAYS">
+                <VBox fx:id="habitsContainer" spacing="10" styleClass="content">
+                    <padding>
+                        <Insets top="10" right="10" bottom="10" left="10"/>
+                    </padding>
+                </VBox>
+            </ScrollPane>
+        </VBox>
+    </center>
+
+</BorderPane>
