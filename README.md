@@ -94,57 +94,63 @@ The application follows a **clean MVC architecture**, supports **light/dark them
 ## 📁 Project Structure
 
 HabitTracker/
-│
 ├── src/
 │   └── main/
 │       ├── java/
 │       │   └── com/
 │       │       └── habittracker/
-│       │           ├── app/
-│       │           │   ├── AppLauncher.java     # Maven/JavaFX entry-point
-│       │           │   ├── Main.java            # JavaFX Application class
-│       │           │   └── SceneManager.java    # Central scene navigation & theming
-│       │           │
-│       │           ├── controllers/             # UI controllers (MVC)
+│       │
+│       │           ├── app/                      # Application entry & navigation
+│       │           │   ├── AppLauncher.java
+│       │           │   ├── Main.java
+│       │           │   └── SceneManager.java
+│       │
+│       │           ├── ui/                       # JavaFX UI controllers
+│       │           │   ├── LoginUIController.java
+│       │           │   ├── DashboardUIController.java
+│       │           │   ├── HabitUIController.java
+│       │           │   ├── TaskUIController.java
+│       │           │   ├── JournalUIController.java
+│       │           │   └── AnalyticsUIController.java
+│       │
+│       │           ├── controllers/              # MVC controllers (logic bridge)
 │       │           │   ├── LoginController.java
 │       │           │   ├── DashboardController.java
 │       │           │   ├── HabitController.java
 │       │           │   ├── TaskController.java
 │       │           │   ├── JournalController.java
-│       │           │   └─┬ AnalyticsController.java
-│       │           │     └─ Analytics screen & charts
-│       │           │
-│       │           ├── models/                  # Core domain models
+│       │           │   └── AnalyticsController.java
+│       │
+│       │           ├── models/                   # Core domain models
 │       │           │   ├── habits/
 │       │           │   │   ├── Habit.java
 │       │           │   │   ├── HabitRecord.java
 │       │           │   │   └── Frequency.java
-│       │           │   ├── tasks/              # Task model
+│       │           │   ├── tasks/
 │       │           │   │   └── Task.java
-│       │           │   ├── journal/            # JournalEntry model
+│       │           │   ├── journal/
 │       │           │   │   └── JournalEntry.java
-│       │           │   ├── analytics/          # Aggregated stats
+│       │           │   ├── analytics/
 │       │           │   │   └── HabitStats.java
 │       │           │   └── user/
 │       │           │       └── User.java
-│       │           │
-│       │           ├── services/                # Business logic & persistence
+│       │
+│       │           ├── services/                 # Business logic & persistence
 │       │           │   ├── UserService.java
-│       │           │   ├── DataStore.java       # JSON file I/O and caching
 │       │           │   ├── HabitService.java
 │       │           │   ├── TaskService.java
 │       │           │   ├── JournalService.java
 │       │           │   ├── AnalyticsService.java
-│       │           │   └── ThemeService.java    # Centralized theme toggling
-│       │           │
-│       │           └── utils/                   # Helper classes
+│       │           │   ├── ThemeService.java
+│       │           │   └── DataStore.java
+│       │
+│       │           └── utils/                    # Helper utilities
 │       │               ├── DateUtils.java
-│       │               ├── DateAdapter.java
-│       │               ├── LocalDateAdapter.java
-│       │               └── FileUtils.java
+│       │               ├── FileUtils.java
+│       │               └── LocalDateAdapter.java
 │       │
 │       └── resources/
-│           ├── fxml/                            # JavaFX views
+│           ├── fxml/                             # JavaFX views
 │           │   ├── login.fxml
 │           │   ├── dashboard.fxml
 │           │   ├── habits.fxml
@@ -152,21 +158,21 @@ HabitTracker/
 │           │   ├── journal.fxml
 │           │   └── analytics.fxml
 │           │
-│           ├── css/                             # Themes & styles
+│           ├── css/                              # Themes & styles
 │           │   ├── light.css
 │           │   └── dark.css
 │           │
-│           └── data/                            # JSON backing storage
+│           └── data/                             # Default JSON data
 │               ├── habits.json
 │               ├── tasks.json
 │               ├── journal.json
 │               └── settings.json
 │
-├── data/                                        # Per‑user persisted data (runtime)
-├── logs/                                        # Log files & optional run.bat
+├── data/                                        # Runtime user data (gitignored)
+├── logs/                                        # Optional logs
 ├── target/                                      # Maven build output
-├── pom.xml                                      # Maven configuration
-└── README.md                                    # This document
+├── pom.xml
+└── README.md
 
 ---
 
