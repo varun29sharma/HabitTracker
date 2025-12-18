@@ -1,188 +1,130 @@
 # HabitTracker
 
-A powerful desktop application for tracking and managing your daily habits, built with Java and JavaFX.
+A comprehensive Java/JavaFX desktop application for tracking and managing daily habits. Built with Maven, this project provides an intuitive GUI for users to monitor their habit progress and maintain accountability.
 
-## Overview
+## Project Overview
 
-HabitTracker is a modern habit tracking application that helps you build and maintain positive habits. With an intuitive interface and robust tracking features, you can monitor your progress, set goals, and achieve personal growth.
-
-## Features
-
-- 📱 **Intuitive UI** - Clean, user-friendly interface built with JavaFX
-- 📊 **Progress Tracking** - Visual progress indicators and statistics
-- 📈 **Analytics** - Detailed habit completion analytics and trends
-- 🎯 **Goal Setting** - Set daily, weekly, and monthly habit goals
-- 💾 **Data Persistence** - Local data storage with file-based database
-- 🔔 **Notifications** - Reminders for habit tracking
-- 🎨 **Customizable** - Personalize your habit categories and themes
+HabitTracker is a modern desktop application that helps users build and track positive habits. The application features a clean, user-friendly interface built with JavaFX and follows enterprise-level architecture patterns with well-organized packages and separation of concerns.
 
 ## Technology Stack
 
-- **Language**: Java 11+
-- **GUI Framework**: JavaFX
+- **Language**: Java
+- **UI Framework**: JavaFX
 - **Build Tool**: Maven
-- **Database**: Local file-based storage
-- **IDE**: IntelliJ IDEA / Eclipse / NetBeans (recommended)
+- **Architecture**: MVC (Model-View-Controller) with Service and Repository layers
 
 ## Project Structure
 
 ```
 HabitTracker/
-├── pom.xml                          # Maven configuration
-├── README.md                         # Project documentation
 ├── src/
 │   ├── main/
 │   │   ├── java/
 │   │   │   └── com/habittracker/
-│   │   │       ├── HabitTrackerApp.java      # Main application entry point
-│   │   │       ├── controller/               # JavaFX controllers
-│   │   │       ├── model/                    # Data models
-│   │   │       ├── service/                  # Business logic
-│   │   │       ├── repository/               # Data access layer
-│   │   │       ├── util/                     # Utility classes
-│   │   │       └── view/                     # Custom UI components
+│   │   │       ├── app/
+│   │   │       │   └── Application entry point and main app class
+│   │   │       ├── controller/
+│   │   │       │   └── JavaFX Controller classes for UI logic
+│   │   │       ├── model/
+│   │   │       │   └── Domain models and data classes
+│   │   │       ├── service/
+│   │   │       │   └── Business logic and service layer
+│   │   │       ├── repository/
+│   │   │       │   └── Data access layer and persistence
+│   │   │       └── util/
+│   │   │           └── Utility classes and helper functions
+│   │   │
 │   │   └── resources/
-│   │       ├── fxml/                        # JavaFX FXML files
-│   │       ├── css/                         # Stylesheets
-│   │       ├── images/                      # Assets and icons
-│   │       └── config/                      # Configuration files
+│   │       ├── fxml/
+│   │       │   └── UI layout files (*.fxml)
+│   │       ├── css/
+│   │       │   └── Stylesheets (*.css)
+│   │       ├── data/
+│   │       │   └── Data files and configurations
+│   │       └── images/
+│   │           └── Application icons and images
+│   │
 │   └── test/
-│       └── java/
-│           └── com/habittracker/           # Unit and integration tests
-├── target/                          # Build output directory
-└── .gitignore                       # Git ignore configuration
+│       └── Java unit tests
+│
+├── pom.xml
+├── README.md
+└── .gitignore
 ```
 
-## Prerequisites
+## Package Organization
 
-Before you begin, ensure you have the following installed:
+### `com.habittracker.app`
+- **Purpose**: Application entry point and main application class
+- **Contents**: Main application launcher, initialization code, and stage management
 
-- **Java Development Kit (JDK)** - Version 11 or higher
-  - Download from [Oracle JDK](https://www.oracle.com/java/technologies/downloads/) or use [OpenJDK](https://openjdk.java.net/)
-- **Maven** - Version 3.6.0 or higher
-  - Download from [Apache Maven](https://maven.apache.org/)
-- **Git** - For version control
-  - Download from [Git](https://git-scm.com/)
+### `com.habittracker.controller`
+- **Purpose**: JavaFX controller classes for UI logic
+- **Contents**: FXML controllers that handle user interactions and update the view
+- **Responsibility**: Binding UI events to business logic, updating UI elements
 
-Verify installations:
+### `com.habittracker.model`
+- **Purpose**: Domain models and data transfer objects
+- **Contents**: Classes representing entities like Habit, HabitLog, User, etc.
+- **Responsibility**: Encapsulating data structures and business entities
+
+### `com.habittracker.service`
+- **Purpose**: Business logic layer
+- **Contents**: Service classes implementing core application logic
+- **Responsibility**: Orchestrating operations between controllers and repositories, enforcing business rules
+
+### `com.habittracker.repository`
+- **Purpose**: Data access layer
+- **Contents**: Repository classes for database operations and persistence
+- **Responsibility**: CRUD operations, database queries, data persistence
+
+### `com.habittracker.util`
+- **Purpose**: Utility classes and helper functions
+- **Contents**: Date/time utilities, validation helpers, formatting functions, constants
+- **Responsibility**: Providing reusable functionality across the application
+
+## Resources Structure
+
+### `src/main/resources/fxml/`
+- FXML layout files defining UI structures
+- Organized by feature/screen (e.g., `main-view.fxml`, `habit-details-view.fxml`)
+- Referenced by controller classes
+
+### `src/main/resources/css/`
+- CSS stylesheets for application theming
+- Style definitions for JavaFX components
+- Global and component-specific styles
+
+### `src/main/resources/data/`
+- Configuration files
+- Sample data files
+- Application properties
+
+### `src/main/resources/images/`
+- Application icons
+- UI images and assets
+- Image resources referenced in FXML files
+
+## Getting Started
+
+### Prerequisites
+
+- Java Development Kit (JDK) 11 or higher
+- Apache Maven 3.6 or higher
+
+### Building the Project
+
 ```bash
-java -version
-javac -version
-mvn -version
-```
-
-## Installation & Setup
-
-### 1. Clone the Repository
-
-```bash
+# Clone the repository
 git clone https://github.com/varun29sharma/HabitTracker.git
 cd HabitTracker
-```
 
-### 2. Configure JavaFX (if not already included in pom.xml)
-
-The `pom.xml` includes JavaFX dependencies. Ensure your `pom.xml` contains:
-
-```xml
-<dependency>
-    <groupId>org.openjfx</groupId>
-    <artifactId>javafx-controls</artifactId>
-    <version>21.0.1</version>
-</dependency>
-<dependency>
-    <groupId>org.openjfx</groupId>
-    <artifactId>javafx-fxml</artifactId>
-    <version>21.0.1</version>
-</dependency>
-```
-
-### 3. Build the Project
-
-```bash
+# Build with Maven
 mvn clean install
-```
 
-This command will:
-- Clean previous build artifacts
-- Download all dependencies
-- Compile the source code
-- Run tests
-- Package the application
-
-### 4. Run the Application
-
-#### Option A: Using Maven
-```bash
+# Run the application
 mvn javafx:run
 ```
-
-#### Option B: Using Java directly (after build)
-```bash
-java -jar target/HabitTracker-1.0-SNAPSHOT.jar
-```
-
-#### Option C: From IDE
-- Open the project in your IDE (IntelliJ IDEA, Eclipse, or NetBeans)
-- Right-click on `HabitTrackerApp.java`
-- Select "Run 'HabitTrackerApp.main()'"
-
-## Maven Build Configuration
-
-The project uses Maven for dependency management and building. Key `pom.xml` elements:
-
-```xml
-<properties>
-    <maven.compiler.source>11</maven.compiler.source>
-    <maven.compiler.target>11</maven.compiler.target>
-    <javafx.version>21.0.1</javafx.version>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-</properties>
-
-<build>
-    <plugins>
-        <plugin>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-compiler-plugin</artifactId>
-            <version>3.11.0</version>
-        </plugin>
-        <plugin>
-            <groupId>org.openjfx</groupId>
-            <artifactId>javafx-maven-plugin</artifactId>
-            <version>0.0.8</version>
-        </plugin>
-    </plugins>
-</build>
-```
-
-## Usage
-
-1. **Launch the Application** - Start HabitTracker using one of the methods above
-2. **Create a Habit** - Add a new habit by clicking the "Add Habit" button
-3. **Track Progress** - Mark habits as completed for each day
-4. **View Analytics** - Check the analytics section for insights and trends
-5. **Manage Habits** - Edit or delete habits as needed
-
-## Platform Availability
-
-### Desktop Platforms Supported
-
-- **Windows** - Windows 10/11 (64-bit)
-- **macOS** - macOS 10.13+ (Intel and Apple Silicon with JavaFX 17+)
-- **Linux** - Ubuntu 18.04+, Debian, Fedora, and other Linux distributions
-
-### Mobile Availability
-
-Currently, HabitTracker is a **desktop application only**. For mobile availability:
-
-- **Android/iOS**: Consider using complementary mobile apps or building a web service backend
-- **Cross-Platform**: Future versions may include mobile support through technologies like:
-  - Gluon Mobile (JavaFX for Android/iOS)
-  - Native iOS/Android apps with shared backend
-  - React Native or Flutter integration
-  - Web-based interface with JavaFX as desktop client
-
-## Development
 
 ### Running Tests
 
@@ -190,76 +132,91 @@ Currently, HabitTracker is a **desktop application only**. For mobile availabili
 mvn test
 ```
 
-### Building for Distribution
+## Architecture Highlights
 
-```bash
-mvn clean package
-```
+### Separation of Concerns
+- **Controllers** handle UI events without business logic
+- **Services** manage business operations and rules
+- **Repositories** handle all data access
+- **Models** represent domain entities
 
-This creates an executable JAR file in the `target/` directory.
+### Layered Architecture
+1. **Presentation Layer**: JavaFX Controllers and FXML views
+2. **Service Layer**: Business logic and use cases
+3. **Data Layer**: Repository pattern for data access
+4. **Utilities**: Shared helper functions and constants
 
-### IDE Setup
+## Features
 
-#### IntelliJ IDEA
-1. Open the project
-2. Ensure SDK is set to Java 11+
-3. Maven should auto-download dependencies
-4. Run the project directly from the IDE
+- Create and manage daily habits
+- Track habit completion status
+- View habit statistics and progress
+- Set habit goals and reminders
+- Manage habit categories
+- Visual progress indicators
 
-#### Eclipse
-1. Import as Maven project
-2. Right-click project → Configure → Convert to Faceted Form
-3. Add JavaFX library to build path
+## Configuration
 
-#### NetBeans
-1. Open as Maven project
-2. Maven dependencies should auto-resolve
-3. Run the project using Shift+F6
+Application configuration can be adjusted in:
+- `src/main/resources/data/application.properties`
+- Controller initialization parameters
+- FXML stage dimensions
 
 ## Contributing
 
-Contributions are welcome! Please follow these steps:
+Contributions are welcome! Please follow these guidelines:
+1. Create a feature branch from `main`
+2. Make your changes in the appropriate package
+3. Write unit tests for new features
+4. Submit a pull request with a clear description
 
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
+## Development Guidelines
+
+### Package Responsibilities
+- Only add code to the package where it logically belongs
+- Keep controllers thin—move business logic to services
+- Services should not depend on controllers or UI classes
+- Use repositories for all data access operations
+
+### Naming Conventions
+- Controllers: `*Controller` suffix
+- Services: `*Service` suffix
+- Repositories: `*Repository` suffix
+- Models: Business entity names without suffix
+- FXML files: lowercase with hyphens (e.g., `habit-view.fxml`)
+
+### Code Organization
+- Keep classes focused and single-purpose
+- Use dependency injection where applicable
+- Document public methods with JavaDoc
+- Maintain consistent code formatting
 
 ## Troubleshooting
 
-### Issue: "JavaFX modules not found"
-**Solution**: Ensure JavaFX dependencies are correctly configured in `pom.xml` and run `mvn clean install`
+### JavaFX Module Issues
+If encountering JavaFX-related errors, ensure:
+- FXML files are in `src/main/resources/fxml/`
+- CSS files are properly referenced in FXML
+- Module paths are correctly configured in `pom.xml`
 
-### Issue: "Cannot find main class"
-**Solution**: Verify `HabitTrackerApp.java` has a proper `main()` method and is compiled
+### Build Issues
+```bash
+# Clean build if encountering issues
+mvn clean install -DskipTests
 
-### Issue: "Build fails with Java version mismatch"
-**Solution**: Check `pom.xml` Java version properties match your installed JDK version
-
-### Issue: Module not found errors on macOS
-**Solution**: Add JavaFX VM options: `--add-modules javafx.controls,javafx.fxml`
+# Rebuild specific module
+mvn clean package -pl :HabitTracker
+```
 
 ## License
 
 This project is licensed under the MIT License - see the LICENSE file for details.
 
-## Author
+## Contact & Support
 
-**Varun Sharma** - [GitHub Profile](https://github.com/varun29sharma)
-
-## Acknowledgments
-
-- JavaFX community and documentation
-- Maven plugins and tooling
-- All contributors and users
-
-## Support
-
-For issues, feature requests, or contributions:
-- Open an issue on [GitHub Issues](https://github.com/varun29sharma/HabitTracker/issues)
-- Contact the project maintainer
+For issues, questions, or suggestions, please open an issue in the GitHub repository or contact the maintainer.
 
 ---
 
-**Last Updated**: December 18, 2025
+**Last Updated**: 2025-12-18
+
